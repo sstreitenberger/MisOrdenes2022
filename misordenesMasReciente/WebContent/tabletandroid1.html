@@ -1,0 +1,174 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+
+<link href="css/a.css" rel="stylesheet" type="text/css">
+
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+
+
+<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-1">
+					<img src="img/burger-king.png" class="img-responsive img-rounded" style="margin-left:-8.5vh;height: 10vh;max-width: 165%;">
+
+				</div>
+
+			
+
+				<h1 class="col-xs-5 text-center">Disponibles</h1>
+
+
+			
+
+
+
+		
+
+				<h1 class="col-xs-5 text-center">Enviadas</h1>
+				
+
+
+
+
+				
+
+
+					<div class="col-xs-1">
+
+						<a href="/misordenes/ConfiguracionCajaAndroid?a=1"> <span
+							class="fa fa-cogs fa-3x" style="color: #F0AD4E"></span>
+						</a>
+					</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="section" style="background-color: black; color: white;">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6"
+					style="border-radius: 25px; border: 2px solid white; padding: 20px; height: 65%; overflow: auto;"
+					id="disponibles"></div>
+				<div class="col-xs-6"
+					style="border-radius: 25px; border: 2px solid white; padding: 20px; height: 65%; overflow: auto;"
+					id="enviadas"></div>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script>
+
+
+
+
+
+
+
+function enviar(id) {
+
+	$.ajax({
+		method : "POST",
+		url : "EnviarOrden",
+		data : {
+			id : id
+		}
+
+	}).done(function(o, err) {
+
+		$.ajax({
+			method : "GET",
+			url : "OrdenesDisponiblesNuevoAndroid?tablet=1"
+		}).done(function(d, err) {
+			$.ajax({
+				method : "GET",
+				url : "OrdenesEnviadasNuevoAndroid?tablet=1"
+			}).done(function(e, err) {
+				$('#enviadas').empty();
+				$('#disponibles').empty();
+				$('#enviadas').append(e);
+				$('#disponibles').append(d);
+			})
+		})
+	})
+
+}
+function volver(id) {
+
+	$.ajax({
+		method : "POST",
+		url : "VolverOrden",
+		data : {
+			id : id
+		}
+
+	}).done(function(o, err) {
+
+		$.ajax({
+			method : "GET",
+			url : "OrdenesDisponiblesNuevoAndroid?tablet=1"
+		}).done(function(d, err) {
+			$.ajax({
+				method : "GET",
+				url : "OrdenesEnviadasNuevoAndroid?tablet=1"
+			}).done(function(e, err) {
+				$('#enviadas').empty();
+				$('#disponibles').empty();
+				$('#enviadas').append(e);
+				$('#disponibles').append(d);
+			})
+		})
+	})
+
+}
+
+$.ajax({
+	method : "GET",
+	url : "OrdenesDisponiblesNuevoAndroid?tablet=1"
+}).done(function(d, err) {
+	$.ajax({
+		method : "GET",
+		url : "OrdenesEnviadasNuevoAndroid?tablet=1"
+	}).done(function(e, err) {
+		$('#enviadas').empty();
+		$('#disponibles').empty();
+		$('#enviadas').append(e);
+		$('#disponibles').append(d);
+	})
+})
+
+window.setInterval(function() {
+
+	$.ajax({
+		method : "GET",
+		url : "OrdenesDisponiblesNuevoAndroid?tablet=1"
+	}).done(function(d, err) {
+		$.ajax({
+			method : "GET",
+			url : "OrdenesEnviadasNuevoAndroid?tablet=1"
+		}).done(function(e, err) {
+			$('#enviadas').empty();
+			$('#disponibles').empty();
+			$('#enviadas').append(e);
+			$('#disponibles').append(d);
+		})
+	})
+
+}, 5000);
+</script>
+
+</html>

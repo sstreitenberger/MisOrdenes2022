@@ -1,0 +1,153 @@
+<html>
+<head>
+<meta charset="utf-8">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!-- <meta http-equiv="refresh" content="5" > -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- <link
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css"> -->
+<link href="css/a.css" rel="stylesheet" type="text/css">
+<link href="css/b.css" rel="stylesheet" type="text/css">
+<link href="css/animate.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+
+
+
+	<!--   <div class="col-md-12">
+            <div class="panel" style="background-color:orange;">
+              <div class="panel-heading " >
+                 <h4 class="hidden-md panel-title text-center" style="color:white;font-size:28px;">ZONA 1</h4>
+              </div>
+            </div>
+          </div> -->
+
+
+
+	<div class="section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-1">
+					<img src="img/burger-king.png" class="img-responsive img-rounded">
+				</div>
+				<div class="col-md-11 text-center">
+				
+				
+				
+				<!-- <h1 class="animated infinite bounce">Example</h1> -->
+				
+				
+				
+				
+					<label style="font-size: 500%; height: 0px;">Su pedido saldrá por esta
+						pantalla</label> <label style="font-size: 325%; color: #FFBB36; ">Su
+						número de pedido esta en el ticket de compra</label>
+				</div>
+			</div>
+		</div>
+
+
+	   <!--   <div class="container">
+        <div id="ordenes"class="row">
+          
+        </div> -->
+
+		<!--       <div class="row text-center">
+         <div class="col-md-6" style="font-size:300%"> en preparacion
+         </div>
+          <div class="col-md-6 " style="font-size:300%"> armado
+         </div>
+         
+         
+        </div>
+            <div class="row text-center">
+         <div class="col-md-3  " style="font-size:250%">zona
+         </div>
+          <div class="col-md-3 " style="font-size:250%">nombre
+         </div>
+         
+            <div class="col-md-3 " style="font-size:250%">zona	
+         </div>
+          <div class="col-md-3 " style="font-size:250%">nombre
+         </div>
+        </div> -->
+
+		<table class="table table-bordered">
+			<col>
+
+			<tr>
+
+				<th colspan="2" scope="colgroup" class="text-center"
+					style="font-size: 400%; width: 50%;">En Preparación</th>
+				<th colspan="2" scope="colgroup" class="text-center"
+					style="font-size: 400%; width: 50%;">Para Retirar</th>
+			</tr>
+			<tr>
+				<th scope="col" class="text-center" style="font-size: 300%; width: 15%;">Zona</th>
+				<th scope="col" class="text-center" style="font-size: 300%">Número</th>
+				<th scope="col" class="text-center" style="font-size: 300%; width: 15%;">Zona</th>
+				<th scope="col" class="text-center" style="font-size: 300%">Número</th>
+			</tr>
+			<tr id="tabla" class="text-center" style="font-size: 500%">
+
+				
+				
+
+
+			</tr>
+
+		</table> 
+
+
+
+
+	</div>
+
+	<script type="text/javascript">
+	actualizar();
+		window.setInterval(function() {
+
+			actualizar();
+			
+			
+
+		}, 2000);
+		
+		function actualizar(){
+			$.ajax({
+				method : "get",
+				url : "OrdenesCliente_nuevo"
+			}).done(function(d, err) {
+				
+				$('#tabla').empty().append(d);
+				
+
+			})
+		}
+		
+		//window.setInterval(function() {debugger;	$('.animacion').css("font-size", 150 + "%");}, 500);
+
+// 		window.setInterval(function() {	$('.animacion').css("font-size", 125 + "%");}, 750);
+		window.setInterval(function() {
+			//$('.animacion').css("font-size", 50+ "%");
+			
+				  $('.animacion').animate({
+					  opacity: 0.8,
+					  
+				    fontSize: "150%",
+				   
+				  }, 500 );
+				  $('.animacion').animate({
+					  opacity: 1,
+					    fontSize: "120%",
+					   
+					  }, 500 );
+			}, 1000);
+	</script>
+
+
+</body>
+</html>

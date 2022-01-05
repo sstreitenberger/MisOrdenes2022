@@ -1,0 +1,129 @@
+@CHARSET "ISO-8859-1";
+.round-button {
+	width: 25%;
+}
+
+.round-button-circle {
+	width: 100%;
+	height: 0;
+	padding-bottom: 80%;
+	border-radius: 50%;
+	border: 10px solid #80FF00;
+	overflow: hidden;
+	background: #04B404;
+	box-shadow: 0 0 3px #80FF00;
+	
+}
+
+.round-button-circle-enviado {
+	width: 100%;
+	height: 0;
+	padding-bottom: 80%;
+	border-radius: 50%;
+	border: 10px solid #8BB5C0;
+    overflow: hidden;
+    background: #3879D9;
+    box-shadow: 0 0 3px #8BB5C0;
+}
+
+.round-button-circle-reciente {
+	width: 100%;
+	height: 0;
+	padding-bottom: 80%;
+	border-radius: 50%;
+	border: 10px solid #BF00FF;
+	overflow: hidden;
+	background: #8904B1;
+	box-shadow: 0 0 3px #BF00FF;
+}
+
+.round-button-circle-utimo {
+	width: 100%;
+	height: 0;
+	padding-bottom: 80%;
+	border-radius: 50%;
+	border: 10px solid #0431B4;
+	overflow: hidden;
+	background: #08088A;
+	box-shadow: 0 0 3px #0431B4;
+}
+
+.round-button-circle-alertA {
+	width: 100%;
+	height: 0;
+	padding-bottom: 80%;
+	border-radius: 50%;
+	border: 10px solid #F3F781;
+	overflow: hidden;
+	color: black;
+	background: #FFFC00;
+	box-shadow: 0 0 3px #F3F781;
+}
+
+
+.round-button-circle-alertB {
+	width: 100%;
+	height: 0;
+	padding-bottom: 80%;
+	border-radius: 50%;
+	border: 10px solid #F7D358;
+ 	overflow: hidden; 
+ 	background: #FFBF00;
+ 	box-shadow: 0 0 3px #F7D358;
+}
+
+.round-button-circle-alertC {
+	width: 100%;
+	height: 0;
+	padding-bottom: 80%;
+	border-radius: 50%;
+	border: 10px solid #FF8585;
+	overflow: hidden;
+	background: #FF0000;
+	box-shadow: 0 0 3px #FF8585;
+}
+
+
+.round-button a {
+	display: block;
+	float: left;
+	width: 100%;
+	padding-top: 50%;
+	padding-bottom: 50%;
+	line-height: 1em;
+	margin-top: -0.8em;
+	text-align: center;
+	
+	font-family: Verdana;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+::-webkit-scrollbar {
+	width: 12px; /* for vertical scrollbars */
+	height: 12px; /* for horizontal scrollbars */
+}
+
+.id_actual{
+	font-size:1700%;
+	padding-left: 50px;
+	margin-bottom: -50px;
+	margin-top: -50px;
+}
+.nombre_actual{
+	font-size:500%;
+	padding-left: 85px;
+}
+
+.nombre_recientes{
+	font-size:200%;
+	opacity: 0.6; 
+	padding-left: 10px
+}
+
+.id_recientes{
+	font-size:350%;
+	opacity: 0.6; 
+	padding-left: 25px
+}

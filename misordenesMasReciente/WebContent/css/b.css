@@ -1,0 +1,105 @@
+.radio-toolbar input[type="radio"] {
+  display: none;
+}
+
+.radio-toolbar label {
+  display: inline-block;
+  background-color: #bbb;
+  padding: 4px 11px;
+  font-family: Arial;
+  font-size: 176%;
+  cursor: pointer;
+}
+
+.radio-toolbar input[type="radio"]:checked+label {
+  background-color: #5CB85C;
+}
+
+
+.checkbox-toolbar input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-toolbar label {
+  display: inline-block;
+  background-color: #bbb;
+  padding: 4px 11px;
+  font-family: Arial;
+  font-size: 176%;
+  cursor: pointer;
+}
+
+.checkbox-toolbar input[type="checkbox"]:checked+label {
+  background-color: #5CB85C;
+}
+
+
+div.scroll {
+
+    height: 500px;
+    overflow: scroll;
+}
+
+.flotanteu { display:scroll;
+position:fixed;
+width: 30px;
+height: 30px;
+top:25%;
+left:5px;
+//padding-left: 5px !important;
+}
+.flotanted { display:scroll;
+position:fixed;
+width: 30px;
+height: 30px;
+top:75%;
+left:5px;
+//padding-left: 5px !important;
+}
+
+
+.animacion {
+	
+	color: #EC1D23; 
+   
+    height: 150px;
+	 overflow: hidden;
+}
+.divzanimado {
+	 overflow: hidden;
+	
+    height: 150px;
+}
+.divnanimado {
+	 overflow: hidden;
+	
+    height: 150px;
+}
+.tdnanimado {
+	 overflow: hidden;
+	
+    height: 86px;
+}
+.nuevotd {
+	    border: 0px solid #dddddd;
+	    color: #7f2f1c;
+}
+
+
+.orden {
+	text-align:left;
+	padding-left:10px;
+	color: #7f2f1c;
+	
+}
+
+
+@font-face
+{
+   font-family: "BBCR";
+   src: url("bbcr.eot");
+   src: url("fuentefancy.eot?#amocristalab") format("embedded-opentype"),
+        url("fuentefancy.woff") format("woff"),
+        url("fuentefancy.ttf") format("truetype"),
+        url("fuentefancy.svg#BlockBE-Condensed") format("svg");
+}

@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta charset="utf-8">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!-- <meta http-equiv="refresh" content="5" > -->
+<script type="text/javascript"
+	src="js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="js/bootstrap.min.js"></script>
+<!-- <link
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css"> -->
+<link href="css/a.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+   <div class="col-md-12">
+            <div class="panel" style="background-color:green;">
+              <div class="panel-heading " >
+                 <h4 class="hidden-md panel-title text-center" style="color:white;font-size:28px;">ZONA 3</h4>
+              </div>
+            </div>
+          </div>
+
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2">
+					<img src="img/burger-king.png" class="img-responsive img-rounded">
+				</div>
+				<div class="col-md-10">
+					<label style="font-size: 450%">Su pedido saldrá por esta
+						pantalla</label> <label style="font-size: 200%; color: #FFBB36">Su
+						número de pedido esta en el ticket de compra</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+      <div class="container">
+        <div id="ordenes"class="row">
+          
+        </div>
+      </div>
+      <div>
+      
+      </div>
+    
+	<script type="text/javascript">
+	 
+		window.setInterval(function() {
+
+			$.ajax({
+				method : "get",
+				url : "OrdenesCliente?zona=3"
+			}).done(function(d, err) {
+
+				$('#ordenes').empty();
+				$('#ordenes').append(d);
+
+			})
+
+		}, 500);
+	</script>
+
+
+</body>
+</html>

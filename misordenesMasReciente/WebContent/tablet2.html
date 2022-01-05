@@ -1,0 +1,244 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+
+<link href="css/a.css" rel="stylesheet" type="text/css">
+
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+
+
+<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-1">
+					<img src="img/burger-king.png" class="img-responsive img-rounded" style="margin-left:-60px">
+
+				</div>
+
+				<div class="col-md-1">
+					<span onclick="scrollupD()" class="fa fa-arrow-up fa-3x"
+						style="color: #5CB85C;margin-top:19px"></span>
+				</div>
+
+				<h1 class="col-md-2 text-center">Disponibles</h1>
+
+
+				<div class="col-md-1">
+					<span onclick="scrolldownD()" class="fa fa-arrow-down fa-3x"
+						style="color: #EC1D23;margin-top:19px"></span>
+				</div>
+
+
+
+				<div class="col-md-1  col-md-offset-2">
+					<span onclick="scrollupE()" class="fa fa-arrow-up fa-3x"
+						style="color: #5CB85C;margin-top:19px"></span>
+				</div>
+
+				<h1 class="col-md-2 text-center">Enviadas</h1>
+				
+
+
+
+
+					<div class="col-md-1">
+						<span onclick="scrolldownE()" class="fa fa-arrow-down fa-3x"
+							style="color: #EC1D23;margin-top:19px"></span>
+					</div>
+
+
+					<div class="col-md-1">
+
+						<a href="/misordenes/ConfiguracionCaja?a=2"> <span
+							class="fa fa-cogs fa-4x" style="color: #F0AD4E"></span>
+						</a>
+					</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="section" style="background-color: black; color: white;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6"
+					style="border-radius: 25px; border: 2px solid white; padding: 20px; height: 65%; overflow: auto;"
+					id="disponibles"></div>
+				<div class="col-md-6"
+					style="border-radius: 25px; border: 2px solid white; padding: 20px; height: 65%; overflow: auto;"
+					id="enviadas"></div>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script>
+
+var d = 1;
+var e = 1;
+function scrolldownD() {
+
+	// Getting the height of the document
+
+	var tope=((document.getElementById('disponibles').childElementCount - 16)/4)+1;
+	if (tope > d) {
+		$('#disponibles').animate({
+			scrollTop : d * 100
+		}, 50);
+
+		d++;
+
+	}
+
+	//$('#disponibles').animate({ scrollTop:  $('#disponibles').offset().top - 20 }, 'fast');
+}
+
+function scrollupD() {
+	
+
+	if (d > 0) {
+		d--;
+		// Getting the height of the document
+
+		$('#disponibles').animate({
+			scrollTop : d * 100
+		}, 50);
+
+	}
+
+}
+
+function scrolldownE() {
+
+	// Getting the height of the document
+
+		var tope=((document.getElementById('enviadas').childElementCount - 16)/4)+1;
+	if (tope > e ) {
+		$('#enviadas').animate({
+			scrollTop : e * 100
+		}, 50);
+
+		e++;
+
+	}
+
+	//$('#disponibles').animate({ scrollTop:  $('#disponibles').offset().top - 20 }, 'fast');
+}
+
+function scrollupE() {
+	
+	if (e  > 0) {
+		e--;
+		// Getting the height of the document
+
+		$('#enviadas').animate({
+			scrollTop : e * 100
+		}, 50);
+	}
+
+}
+
+
+	function enviar(id) {
+
+		$.ajax({
+			method : "POST",
+			url : "EnviarOrden",
+			data : {
+				id : id
+			}
+
+		}).done(function(o, err) {
+
+			$.ajax({
+				method : "GET",
+				url : "OrdenesDisponiblesNuevo?tablet=2"
+			}).done(function(d, err) {
+				$.ajax({
+					method : "GET",
+					url : "OrdenesEnviadasNuevo?tablet=2"
+				}).done(function(e, err) {
+					$('#enviadas').empty();
+					$('#disponibles').empty();
+					$('#enviadas').append(e);
+					$('#disponibles').append(d);
+				})
+			})
+		})
+
+	}
+	function volver(id) {
+
+		$.ajax({
+			method : "POST",
+			url : "VolverOrden",
+			data : {
+				id : id
+			}
+
+		}).done(function(o, err) {
+
+			$.ajax({
+				method : "GET",
+				url : "OrdenesDisponiblesNuevo?tablet=2"
+			}).done(function(d, err) {
+				$.ajax({
+					method : "GET",
+					url : "OrdenesEnviadasNuevo?tablet=2"
+				}).done(function(e, err) {
+					$('#enviadas').empty();
+					$('#disponibles').empty();
+					$('#enviadas').append(e);
+					$('#disponibles').append(d);
+				})
+			})
+		})
+
+	}
+
+	$.ajax({
+		method : "GET",
+		url : "OrdenesDisponiblesNuevo?tablet=2"
+	}).done(function(d, err) {
+		$.ajax({
+			method : "GET",
+			url : "OrdenesEnviadasNuevo?tablet=2"
+		}).done(function(e, err) {
+			$('#enviadas').empty();
+			$('#disponibles').empty();
+			$('#enviadas').append(e);
+			$('#disponibles').append(d);
+		})
+	})
+
+	window.setInterval(function() {
+
+		$.ajax({
+			method : "GET",
+			url : "OrdenesDisponiblesNuevo?tablet=2"
+		}).done(function(d, err) {
+			$.ajax({
+				method : "GET",
+				url : "OrdenesEnviadasNuevo?tablet=2"
+			}).done(function(e, err) {
+				$('#enviadas').empty();
+				$('#disponibles').empty();
+				$('#enviadas').append(e);
+				$('#disponibles').append(d);
+			})
+		})
+
+	}, 5000);
+</script>
+</html>
